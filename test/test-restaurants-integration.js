@@ -89,7 +89,7 @@ describe('Restaurants API resource', function() {
 
   after(function() {
     return closeServer();
-  })
+  });
 
   // note the use of nested `describe` blocks. this allows us to make clearer, more discrete tests that focus on proving something small
   describe('GET endpoint', function() {
