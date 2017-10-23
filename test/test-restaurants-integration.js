@@ -107,7 +107,7 @@ describe('Restaurants API resource', function() {
         .then(function(_res) {
           // so subsequent .then blocks can access resp obj.
           res = _res;
-          res.should.have.status(204);
+          res.should.have.status(204); // changed from 200 to 204 to break it
           // otherwise our db seeding didn't work
           res.body.restaurants.should.have.length.of.at.least(1);
           return Restaurant.count();
