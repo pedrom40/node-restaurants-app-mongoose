@@ -132,8 +132,7 @@ describe('Restaurants API resource', function() {
 
           res.body.restaurants.forEach(function(restaurant) {
             restaurant.should.be.a('object');
-            restaurant.should.include.keys(
-              'id', 'name', 'cuisine', 'borough', 'grade', 'address');
+            restaurant.should.include.keys('id', 'name', 'cuisine', 'borough', 'grade', 'address');
           });
           resRestaurant = res.body.restaurants[0];
           return Restaurant.findById(resRestaurant.id);
@@ -166,16 +165,14 @@ describe('Restaurants API resource', function() {
           res.should.have.status(201);
           res.should.be.json;
           res.body.should.be.a('object');
-          res.body.should.include.keys(
-            'id', 'name', 'cuisine', 'borough', 'grade', 'address');
+          res.body.should.include.keys('id', 'name', 'cuisine', 'borough', 'grade', 'address');
           res.body.name.should.equal(newRestaurant.name);
           // cause Mongo should have created id on insertion
           res.body.id.should.not.be.null;
           res.body.cuisine.should.equal(newRestaurant.cuisine);
           res.body.borough.should.equal(newRestaurant.borough);
 
-          mostRecentGrade = newRestaurant.grades.sort(
-            (a, b) => b.date - a.date)[0].grade;
+          mostRecentGrade = newRestaurant.grades.sort( (a, b) => b.date - a.date )[0].grade;
 
           res.body.grade.should.equal(mostRecentGrade);
           return Restaurant.findById(res.body.id);
